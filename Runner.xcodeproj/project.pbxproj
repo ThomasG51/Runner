@@ -13,6 +13,9 @@
 		7E30EC3427EF64AF0061F2FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E30EC3227EF64AF0061F2FB /* Main.storyboard */; };
 		7E30EC3627EF64B00061F2FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E30EC3527EF64B00061F2FB /* Assets.xcassets */; };
 		7E30EC3927EF64B00061F2FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E30EC3727EF64B00061F2FB /* LaunchScreen.storyboard */; };
+		7E30EC4627EF6AF80061F2FB /* Level_0-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E30EC4527EF6AF80061F2FB /* Level_0-1.sks */; };
+		7E30EC4A27EF6BFA0061F2FB /* TileSets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E30EC4927EF6BFA0061F2FB /* TileSets.sks */; };
+		7E30EC4D27EF72BB0061F2FB /* SKNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC4C27EF72BB0061F2FB /* SKNode+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		7E30EC3527EF64B00061F2FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E30EC3827EF64B00061F2FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E30EC3F27EF64F80061F2FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E30EC4527EF6AF80061F2FB /* Level_0-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level_0-1.sks"; sourceTree = "<group>"; };
+		7E30EC4927EF6BFA0061F2FB /* TileSets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSets.sks; sourceTree = "<group>"; };
+		7E30EC4C27EF72BB0061F2FB /* SKNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +65,11 @@
 				7E30EC2827EF64AF0061F2FB /* AppDelegate.swift */,
 				7E30EC3F27EF64F80061F2FB /* Info.plist */,
 				7E30EC3527EF64B00061F2FB /* Assets.xcassets */,
-				7E30EC4327EF659B0061F2FB /* Scenes */,
+				7E30EC4327EF659B0061F2FB /* Scene */,
+				7E30EC4427EF6AB80061F2FB /* Scene Editor */,
 				7E30EC4227EF658E0061F2FB /* Controller */,
 				7E30EC4127EF65760061F2FB /* UI */,
+				7E30EC4B27EF72120061F2FB /* Extension */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -83,12 +91,45 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		7E30EC4327EF659B0061F2FB /* Scenes */ = {
+		7E30EC4327EF659B0061F2FB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				7E30EC2E27EF64AF0061F2FB /* GameScene.swift */,
 			);
-			path = Scenes;
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		7E30EC4427EF6AB80061F2FB /* Scene Editor */ = {
+			isa = PBXGroup;
+			children = (
+				7E30EC4727EF6B130061F2FB /* Level */,
+				7E30EC4827EF6BD00061F2FB /* Tile */,
+			);
+			path = "Scene Editor";
+			sourceTree = "<group>";
+		};
+		7E30EC4727EF6B130061F2FB /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				7E30EC4527EF6AF80061F2FB /* Level_0-1.sks */,
+			);
+			path = Level;
+			sourceTree = "<group>";
+		};
+		7E30EC4827EF6BD00061F2FB /* Tile */ = {
+			isa = PBXGroup;
+			children = (
+				7E30EC4927EF6BFA0061F2FB /* TileSets.sks */,
+			);
+			path = Tile;
+			sourceTree = "<group>";
+		};
+		7E30EC4B27EF72120061F2FB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7E30EC4C27EF72BB0061F2FB /* SKNode+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +191,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E30EC3427EF64AF0061F2FB /* Main.storyboard in Resources */,
+				7E30EC4627EF6AF80061F2FB /* Level_0-1.sks in Resources */,
+				7E30EC4A27EF6BFA0061F2FB /* TileSets.sks in Resources */,
 				7E30EC3627EF64B00061F2FB /* Assets.xcassets in Resources */,
 				7E30EC3927EF64B00061F2FB /* LaunchScreen.storyboard in Resources */,
 			);
@@ -163,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E30EC2F27EF64AF0061F2FB /* GameScene.swift in Sources */,
+				7E30EC4D27EF72BB0061F2FB /* SKNode+Extension.swift in Sources */,
 				7E30EC3127EF64AF0061F2FB /* GameViewController.swift in Sources */,
 				7E30EC2927EF64AF0061F2FB /* AppDelegate.swift in Sources */,
 			);
