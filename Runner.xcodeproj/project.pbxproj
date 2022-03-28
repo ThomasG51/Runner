@@ -16,6 +16,9 @@
 		7E30EC4627EF6AF80061F2FB /* Level_0-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E30EC4527EF6AF80061F2FB /* Level_0-1.sks */; };
 		7E30EC4A27EF6BFA0061F2FB /* TileSets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E30EC4927EF6BFA0061F2FB /* TileSets.sks */; };
 		7E30EC4D27EF72BB0061F2FB /* SKNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC4C27EF72BB0061F2FB /* SKNode+Extension.swift */; };
+		7E30EC5027F1AC450061F2FB /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC4F27F1AC450061F2FB /* Layer.swift */; };
+		7E30EC5227F1B8830061F2FB /* RepeatingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC5127F1B8830061F2FB /* RepeatingLayer.swift */; };
+		7E30EC5427F1BE230061F2FB /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC5327F1BE230061F2FB /* GameConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		7E30EC4527EF6AF80061F2FB /* Level_0-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level_0-1.sks"; sourceTree = "<group>"; };
 		7E30EC4927EF6BFA0061F2FB /* TileSets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSets.sks; sourceTree = "<group>"; };
 		7E30EC4C27EF72BB0061F2FB /* SKNode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extension.swift"; sourceTree = "<group>"; };
+		7E30EC4F27F1AC450061F2FB /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		7E30EC5127F1B8830061F2FB /* RepeatingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingLayer.swift; sourceTree = "<group>"; };
+		7E30EC5327F1BE230061F2FB /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +69,10 @@
 			isa = PBXGroup;
 			children = (
 				7E30EC2827EF64AF0061F2FB /* AppDelegate.swift */,
+				7E30EC5327F1BE230061F2FB /* GameConstants.swift */,
 				7E30EC3F27EF64F80061F2FB /* Info.plist */,
 				7E30EC3527EF64B00061F2FB /* Assets.xcassets */,
+				7E30EC4E27F1AC290061F2FB /* Layer */,
 				7E30EC4327EF659B0061F2FB /* Scene */,
 				7E30EC4427EF6AB80061F2FB /* Scene Editor */,
 				7E30EC4227EF658E0061F2FB /* Controller */,
@@ -130,6 +138,15 @@
 				7E30EC4C27EF72BB0061F2FB /* SKNode+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		7E30EC4E27F1AC290061F2FB /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				7E30EC4F27F1AC450061F2FB /* Layer.swift */,
+				7E30EC5127F1B8830061F2FB /* RepeatingLayer.swift */,
+			);
+			path = Layer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,8 +224,11 @@
 			files = (
 				7E30EC2F27EF64AF0061F2FB /* GameScene.swift in Sources */,
 				7E30EC4D27EF72BB0061F2FB /* SKNode+Extension.swift in Sources */,
+				7E30EC5027F1AC450061F2FB /* Layer.swift in Sources */,
 				7E30EC3127EF64AF0061F2FB /* GameViewController.swift in Sources */,
+				7E30EC5427F1BE230061F2FB /* GameConstants.swift in Sources */,
 				7E30EC2927EF64AF0061F2FB /* AppDelegate.swift in Sources */,
+				7E30EC5227F1B8830061F2FB /* RepeatingLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
