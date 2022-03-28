@@ -20,9 +20,12 @@ struct GameConstants {
     }
     
     struct assetNames {
-        static let groudTiles = "Gound Tiles"
+        static let groundTiles = "Ground Tiles"
         static let desertBackground = "DesertBackground"
         static let grassBackground = "GrassBackground"
+        static let player = "Player"
+        static let playerDefault = "Idle_0"
+        static let ground = "GroundNode"
     }
     
 }
