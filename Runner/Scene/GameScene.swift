@@ -22,7 +22,18 @@ class GameScene: SKScene {
     var lastTime: TimeInterval = 0
     var deltaTime: TimeInterval = 0
 
-    var gameState = GameState.ready
+    var gameState = GameState.ready {
+        willSet {
+            switch newValue {
+            case .ongoing:
+                player.state = .running
+            case .finished:
+                player.state = .idle
+            default:
+                break
+            }
+        }
+    }
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -78,6 +89,8 @@ class GameScene: SKScene {
         PhysicsHelper.addPhysicsBody(to: player, with: player.name!)
         player.position = CGPoint(x: frame.midX / 2, y: frame.midY)
         player.zPosition = GameConstants.Zpositions.player
+        player.loadTextures()
+        player.state = .idle
         addChild(player)
     }
     

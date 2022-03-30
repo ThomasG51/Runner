@@ -28,4 +28,14 @@ struct GameConstants {
         static let ground = "GroundNode"
     }
     
+    struct atlas {
+        static let playerIdleAtlas = "Player Idle Atlas"
+        static let idlePrefixKey = "Idle_"
+        static let playerRunAtlas = "Player Run Atlas"
+        static let runPrefixKey = "Run_"
+        static let playerJumpAtlas = "Player Jump Atlas"
+        static let jumpPrefixKey = "Jump_"
+        static let playerDieAtlas = "Player Die Atlas"
+        static let diePrefixKey = "Die_"
+    }
 }
