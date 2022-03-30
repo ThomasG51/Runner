@@ -19,7 +19,7 @@ struct GameConstants {
         static let hud: CGFloat = 5
     }
     
-    struct assetNames {
+    struct AssetNames {
         static let groundTiles = "Ground Tiles"
         static let desertBackground = "DesertBackground"
         static let grassBackground = "GrassBackground"
@@ -28,7 +28,7 @@ struct GameConstants {
         static let ground = "GroundNode"
     }
     
-    struct atlas {
+    struct Atlas {
         static let playerIdleAtlas = "Player Idle Atlas"
         static let idlePrefixKey = "Idle_"
         static let playerRunAtlas = "Player Run Atlas"
@@ -37,5 +37,22 @@ struct GameConstants {
         static let jumpPrefixKey = "Jump_"
         static let playerDieAtlas = "Player Die Atlas"
         static let diePrefixKey = "Die_"
+    }
+    
+    struct Actions {
+        static let jumpUpActionKey = "JumpUp"
+        static let brakeDescendActionKEy = "BrakeDescend"
+    }
+    
+    struct PhysicsCategories {
+        static let no: UInt32 = 0
+        static let all: UInt32 = UInt32.max
+        static let player: UInt32 = 0x1
+        static let ground: UInt32 = 0x1 << 1
+        static let finish: UInt32 = 0x1 << 2
+        static let collectible: UInt32 = 0x1 << 3
+        static let ennemy: UInt32 = 0x1 << 4
+        static let frame: UInt32 = 0x1 << 5
+        static let ceiling: UInt32 = 0x1 << 6
     }
 }

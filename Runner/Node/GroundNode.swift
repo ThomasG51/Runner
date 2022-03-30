@@ -25,9 +25,11 @@ class GroundNode: SKSpriteNode {
         
         activatedBody = SKPhysicsBody(edgeFrom: bodyStartPoint, to: bodyEndPoint)
         activatedBody?.restitution = 0
+        activatedBody?.categoryBitMask = GameConstants.PhysicsCategories.ground
+        activatedBody?.collisionBitMask = GameConstants.PhysicsCategories.player
         
         physicsBody = isBodyActivated ? activatedBody : nil
-        name = GameConstants.assetNames.ground
+        name = GameConstants.AssetNames.ground
     }
 
     required init?(coder aDecoder: NSCoder) {

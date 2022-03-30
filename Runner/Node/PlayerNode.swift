@@ -24,11 +24,13 @@ class PlayerNode: SKSpriteNode {
         }
     }
     
+    var airborne = false
+    
     func loadTextures() {
-        idleFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.atlas.playerIdleAtlas), withName: GameConstants.atlas.idlePrefixKey)
-        runFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.atlas.playerRunAtlas), withName: GameConstants.atlas.runPrefixKey)
-        jumpFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.atlas.playerJumpAtlas), withName: GameConstants.atlas.jumpPrefixKey)
-        dieFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.atlas.playerDieAtlas), withName: GameConstants.atlas.diePrefixKey)
+        idleFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.Atlas.playerIdleAtlas), withName: GameConstants.Atlas.idlePrefixKey)
+        runFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.Atlas.playerRunAtlas), withName: GameConstants.Atlas.runPrefixKey)
+        jumpFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.Atlas.playerJumpAtlas), withName: GameConstants.Atlas.jumpPrefixKey)
+        dieFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: GameConstants.Atlas.playerDieAtlas), withName: GameConstants.Atlas.diePrefixKey)
     }
     
     func animate(for state: PLayerState) {

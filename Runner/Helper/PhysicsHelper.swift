@@ -11,10 +11,13 @@ class PhysicsHelper {
     
     static func addPhysicsBody(to sprite: SKSpriteNode, with name: String) {
         switch name {
-        case GameConstants.assetNames.player:
+        case GameConstants.AssetNames.player:
             sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: sprite.size.width/2, height: sprite.size.height))
             sprite.physicsBody!.restitution = 0
             sprite.physicsBody!.allowsRotation = false
+            sprite.physicsBody?.categoryBitMask = GameConstants.PhysicsCategories.player
+            sprite.physicsBody?.collisionBitMask = GameConstants.PhysicsCategories.ground | GameConstants.PhysicsCategories.finish
+            sprite.physicsBody?.contactTestBitMask = GameConstants.PhysicsCategories.all
         default:
             sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
         }

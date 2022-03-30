@@ -18,6 +18,8 @@ class GameScene: SKScene {
     var mapNode: SKNode!
     var tileMap: SKTileMapNode!
     var player: PlayerNode!
+    var touch = false
+    var brake = false
     
     var lastTime: TimeInterval = 0
     var deltaTime: TimeInterval = 0
@@ -53,7 +55,7 @@ class GameScene: SKScene {
         addChild(backgroundLayer)
         
         for index in 0...1 {
-            let backgroundImage = SKSpriteNode(imageNamed: GameConstants.assetNames.desertBackground)
+            let backgroundImage = SKSpriteNode(imageNamed: GameConstants.AssetNames.desertBackground)
             backgroundImage.name = String(index)
             backgroundImage.scale(to: frame.size, width: false, multiplier: 1.0)
             backgroundImage.anchorPoint = CGPoint.zero
@@ -74,7 +76,7 @@ class GameScene: SKScene {
     }
     
     func loadTileMap() {
-        guard let groundTiles = mapNode.childNode(withName: GameConstants.assetNames.groundTiles) as? SKTileMapNode else { return }
+        guard let groundTiles = mapNode.childNode(withName: GameConstants.AssetNames.groundTiles) as? SKTileMapNode else { return }
         tileMap = groundTiles
         tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
         PhysicsHelper.addPhysics(to: tileMap, with: "ground")
@@ -83,15 +85,48 @@ class GameScene: SKScene {
     }
 
     func addPlayer() {
-        player = PlayerNode(imageNamed: GameConstants.assetNames.playerDefault)
+        player = PlayerNode(imageNamed: GameConstants.AssetNames.playerDefault)
         player.scale(to: frame.size, width: false, multiplier: 0.1)
-        player.name = GameConstants.assetNames.player
+        player.name = GameConstants.AssetNames.player
         PhysicsHelper.addPhysicsBody(to: player, with: player.name!)
         player.position = CGPoint(x: frame.midX / 2, y: frame.midY)
         player.zPosition = GameConstants.Zpositions.player
         player.loadTextures()
         player.state = .idle
         addChild(player)
+        addPlayerActions()
+    }
+    
+    func addPlayerActions() {
+        let up = SKAction.moveBy(x: 0, y: frame.size.height/4, duration: 0.4)
+        up.timingMode = .easeOut
+        
+        player.createUserData(entry: up, forkey: GameConstants.Actions.jumpUpActionKey)
+        
+        let move = SKAction.moveBy(x: 0, y: player.size.height, duration: 0.4)
+        let jump = SKAction.animate(with: player.jumpFrames, timePerFrame: 0.4/Double(player.jumpFrames.count), resize: true, restore: true)
+        let group = SKAction.group([move, jump])
+        
+        player.createUserData(entry: group, forkey: GameConstants.Actions.brakeDescendActionKEy)
+    }
+    
+    func jump() {
+        player.airborne = true
+        player.turnGravity(on: false)
+        player.run(player.userData?.value(forKey: GameConstants.Actions.jumpUpActionKey) as! SKAction) {
+            if self.touch {
+                self.player.run(self.player.userData?.value(forKey: GameConstants.Actions.jumpUpActionKey) as! SKAction) {
+                    self.player.turnGravity(on: true)
+                }
+            }
+        }
+    }
+    
+    func brakeDescend() {
+        brake = true
+        player.physicsBody?.velocity.dy = 0.0
+        
+        player.run(player.userData?.value(forKey: GameConstants.Actions.brakeDescendActionKEy) as! SKAction)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -99,7 +134,12 @@ class GameScene: SKScene {
         case .ready:
             gameState = .ongoing
         case .ongoing:
-            break
+            touch = true
+            if !player.airborne {
+                jump()
+            } else if !brake {
+                brakeDescend()
+            }
         case .paused:
             break
         case .finished:
@@ -110,11 +150,13 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //
+        touch = false
+        player.turnGravity(on: true)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //
+        touch = false
+        player.turnGravity(on: true)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -132,7 +174,7 @@ class GameScene: SKScene {
     }
     
     override func didSimulatePhysics() {
-        for node in tileMap[GameConstants.assetNames.ground] {
+        for node in tileMap[GameConstants.AssetNames.ground] {
             if let groundNode = node as? GroundNode {
                 let groundY = (groundNode.position.y + groundNode.size.height) * tileMap.yScale
                 let playerY = player.position.y - player.size.height / 3
@@ -144,5 +186,28 @@ class GameScene: SKScene {
 }
 
 extension GameScene: SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        switch contactMask {
+        case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.ground:
+            player.airborne = false
+            brake = false
+        default:
+            break
+        }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        switch contactMask {
+        case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.ground:
+            player.airborne = true
+        default:
+            break
+        }
+    }
     
 }
