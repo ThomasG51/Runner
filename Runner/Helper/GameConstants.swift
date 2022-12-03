@@ -5,11 +5,10 @@
 //  Created by Thomas George on 28/03/2022.
 //
 
-import Foundation
 import CoreGraphics
+import Foundation
 
 struct GameConstants {
-    
     struct Zpositions {
         static let farBackground: CGFloat = 0
         static let closeBackground: CGFloat = 1
@@ -26,6 +25,7 @@ struct GameConstants {
         static let player = "Player"
         static let playerDefault = "Idle_0"
         static let ground = "GroundNode"
+        static let finishLine = "FinishLine"
     }
     
     struct Atlas {
@@ -46,7 +46,7 @@ struct GameConstants {
     
     struct PhysicsCategories {
         static let no: UInt32 = 0
-        static let all: UInt32 = UInt32.max
+        static let all: UInt32 = .max
         static let player: UInt32 = 0x1
         static let ground: UInt32 = 0x1 << 1
         static let finish: UInt32 = 0x1 << 2

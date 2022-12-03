@@ -12,7 +12,6 @@ enum GameState {
 }
 
 class GameScene: SKScene {
-    
     var worldLayer: Layer!
     var backgroundLayer: RepeatingLayer!
     var mapNode: SKNode!
@@ -54,7 +53,7 @@ class GameScene: SKScene {
         backgroundLayer.zPosition = GameConstants.Zpositions.farBackground
         addChild(backgroundLayer)
         
-        for index in 0...1 {
+        for index in 0 ... 1 {
             let backgroundImage = SKSpriteNode(imageNamed: GameConstants.AssetNames.desertBackground)
             backgroundImage.name = String(index)
             backgroundImage.scale(to: frame.size, width: false, multiplier: 1.0)
@@ -63,7 +62,7 @@ class GameScene: SKScene {
             backgroundLayer.addChild(backgroundImage)
         }
         
-        backgroundLayer.layerVelocity = CGPoint(x: -(100), y: 0)
+        backgroundLayer.layerVelocity = CGPoint(x: -100, y: 0)
         
         load(level: "Level_0-1")
     }
@@ -80,7 +79,11 @@ class GameScene: SKScene {
         tileMap = groundTiles
         tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
         PhysicsHelper.addPhysics(to: tileMap, with: "ground")
-        
+        for child in groundTiles.children {
+            if let sprite = child as? SKSpriteNode, sprite.name != nil {
+                ObjectHelper.handleChild(sprite: sprite, with: sprite.name!)
+            }
+        }
         addPlayer()
     }
 
@@ -98,13 +101,13 @@ class GameScene: SKScene {
     }
     
     func addPlayerActions() {
-        let up = SKAction.moveBy(x: 0, y: frame.size.height/4, duration: 0.4)
+        let up = SKAction.moveBy(x: 0, y: frame.size.height / 4, duration: 0.4)
         up.timingMode = .easeOut
         
         player.createUserData(entry: up, forkey: GameConstants.Actions.jumpUpActionKey)
         
         let move = SKAction.moveBy(x: 0, y: player.size.height, duration: 0.4)
-        let jump = SKAction.animate(with: player.jumpFrames, timePerFrame: 0.4/Double(player.jumpFrames.count), resize: true, restore: true)
+        let jump = SKAction.animate(with: player.jumpFrames, timePerFrame: 0.4 / Double(player.jumpFrames.count), resize: true, restore: true)
         let group = SKAction.group([move, jump])
         
         player.createUserData(entry: group, forkey: GameConstants.Actions.brakeDescendActionKEy)
@@ -144,8 +147,6 @@ class GameScene: SKScene {
             break
         case .finished:
             break
-        default:
-            break
         }
     }
     
@@ -182,18 +183,17 @@ class GameScene: SKScene {
             }
         }
     }
-    
 }
 
 extension GameScene: SKPhysicsContactDelegate {
-    
     func didBegin(_ contact: SKPhysicsContact) {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-        
         switch contactMask {
         case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.ground:
             player.airborne = false
             brake = false
+        case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.finish:
+            gameState = .finished
         default:
             break
         }
@@ -209,5 +209,4 @@ extension GameScene: SKPhysicsContactDelegate {
             break
         }
     }
-    
 }

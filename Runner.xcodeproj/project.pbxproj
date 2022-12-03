@@ -22,6 +22,7 @@
 		7E30EC5627F1D8AD0061F2FB /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC5527F1D8AD0061F2FB /* PlayerNode.swift */; };
 		7E30EC5927F1DCF20061F2FB /* PhysicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC5827F1DCF20061F2FB /* PhysicsHelper.swift */; };
 		7E30EC5C27F1EF000061F2FB /* GroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC5B27F1EF000061F2FB /* GroundNode.swift */; };
+		7E499279293B8CC000FBA984 /* ObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E499278293B8CC000FBA984 /* ObjectHelper.swift */; };
 		7E6606CB27F446BC0081814B /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6606CA27F446BC0081814B /* AnimationHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		7E30EC5527F1D8AD0061F2FB /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
 		7E30EC5827F1DCF20061F2FB /* PhysicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsHelper.swift; sourceTree = "<group>"; };
 		7E30EC5B27F1EF000061F2FB /* GroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundNode.swift; sourceTree = "<group>"; };
+		7E499278293B8CC000FBA984 /* ObjectHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectHelper.swift; sourceTree = "<group>"; };
 		7E6606CA27F446BC0081814B /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 				7E30EC5327F1BE230061F2FB /* GameConstants.swift */,
 				7E30EC5827F1DCF20061F2FB /* PhysicsHelper.swift */,
 				7E6606CA27F446BC0081814B /* AnimationHelper.swift */,
+				7E499278293B8CC000FBA984 /* ObjectHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				7E30EC4D27EF72BB0061F2FB /* SKNode+Extension.swift in Sources */,
 				7E30EC5027F1AC450061F2FB /* Layer.swift in Sources */,
 				7E30EC3127EF64AF0061F2FB /* GameViewController.swift in Sources */,
+				7E499279293B8CC000FBA984 /* ObjectHelper.swift in Sources */,
 				7E30EC5627F1D8AD0061F2FB /* PlayerNode.swift in Sources */,
 				7E30EC5427F1BE230061F2FB /* GameConstants.swift in Sources */,
 				7E6606CB27F446BC0081814B /* AnimationHelper.swift in Sources */,
