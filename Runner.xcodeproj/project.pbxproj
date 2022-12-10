@@ -26,6 +26,7 @@
 		7E56312C2944E3EA00DAF5CF /* ParticleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56312B2944E3EA00DAF5CF /* ParticleHelper.swift */; };
 		7E5631302944E57000DAF5CF /* CoinDustEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E56312E2944E57000DAF5CF /* CoinDustEmitter.sks */; };
 		7E5631312944E57000DAF5CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E56312F2944E57000DAF5CF /* Assets.xcassets */; };
+		7E5631332944EF0700DAF5CF /* BrakeSparkEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E5631322944EF0700DAF5CF /* BrakeSparkEmitter.sks */; };
 		7E6606CB27F446BC0081814B /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6606CA27F446BC0081814B /* AnimationHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		7E56312B2944E3EA00DAF5CF /* ParticleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleHelper.swift; sourceTree = "<group>"; };
 		7E56312E2944E57000DAF5CF /* CoinDustEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDustEmitter.sks; sourceTree = "<group>"; };
 		7E56312F2944E57000DAF5CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7E5631322944EF0700DAF5CF /* BrakeSparkEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrakeSparkEmitter.sks; sourceTree = "<group>"; };
 		7E6606CA27F446BC0081814B /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,7 +86,6 @@
 		7E30EC2727EF64AF0061F2FB /* Runner */ = {
 			isa = PBXGroup;
 			children = (
-				7E56312D2944E53000DAF5CF /* Particle Emitters */,
 				7E30EC2827EF64AF0061F2FB /* AppDelegate.swift */,
 				7E30EC3F27EF64F80061F2FB /* Info.plist */,
 				7E30EC3527EF64B00061F2FB /* Assets.xcassets */,
@@ -96,6 +97,7 @@
 				7E30EC4127EF65760061F2FB /* UI */,
 				7E30EC4B27EF72120061F2FB /* Extension */,
 				7E30EC5727F1DCD50061F2FB /* Helper */,
+				7E56312D2944E53000DAF5CF /* Particle Emitters */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				7E56312E2944E57000DAF5CF /* CoinDustEmitter.sks */,
+				7E5631322944EF0700DAF5CF /* BrakeSparkEmitter.sks */,
 				7E56312F2944E57000DAF5CF /* Assets.xcassets */,
 			);
 			path = "Particle Emitters";
@@ -259,6 +262,7 @@
 				7E30EC4627EF6AF80061F2FB /* Level_0-1.sks in Resources */,
 				7E30EC4A27EF6BFA0061F2FB /* TileSets.sks in Resources */,
 				7E30EC3627EF64B00061F2FB /* Assets.xcassets in Resources */,
+				7E5631332944EF0700DAF5CF /* BrakeSparkEmitter.sks in Resources */,
 				7E5631312944E57000DAF5CF /* Assets.xcassets in Resources */,
 				7E30EC3927EF64B00061F2FB /* LaunchScreen.storyboard in Resources */,
 				7E5631302944E57000DAF5CF /* CoinDustEmitter.sks in Resources */,

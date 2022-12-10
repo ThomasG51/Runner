@@ -16,8 +16,8 @@ class ParticleHelper {
         return emitter
     }
 
-    static func removeParticleEffect(name: String, node: SKNode) {
-        let emitters = node[name]
+    static func removeParticleEffect(name: String, from: SKNode) {
+        let emitters = from[name]
         for emitter in emitters {
             emitter.removeFromParent()
         }

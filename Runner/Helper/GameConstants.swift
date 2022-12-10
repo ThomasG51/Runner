@@ -51,6 +51,7 @@ struct GameConstants {
     
     struct Particle {
         static let coinDustEmitter = "CoinDustEmitter"
+        static let brakeSparkEmitter = "BrakeSparkEmitter"
     }
     
     struct PhysicsCategories {

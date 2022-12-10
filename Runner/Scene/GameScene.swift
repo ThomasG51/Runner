@@ -126,7 +126,15 @@ class GameScene: SKScene {
     func brakeDescend() {
         brake = true
         player.physicsBody?.velocity.dy = 0.0
-        player.run(player.userData?.value(forKey: GameConstants.Actions.brakeDescendActionKEy) as! SKAction)
+        
+        if let sparky = ParticleHelper.addParticleEffect(name: GameConstants.Particle.brakeSparkEmitter, particlePositionRange: CGVector(dx: 30.0, dy: 30.0), position: CGPoint(x: player.position.x, y: player.position.y - player.size.height / 2)) {
+            sparky.zPosition = GameConstants.Zpositions.elements
+            addChild(sparky)
+        }
+        
+        player.run(player.userData?.value(forKey: GameConstants.Actions.brakeDescendActionKEy) as! SKAction) {
+            ParticleHelper.removeParticleEffect(name: GameConstants.Particle.brakeSparkEmitter, from: self)
+        }
     }
     
     func handleEnemyContact() {
