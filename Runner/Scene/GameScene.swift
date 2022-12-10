@@ -19,7 +19,6 @@ class GameScene: SKScene {
     var player: PlayerNode!
     var touch = false
     var brake = false
-    
     var lastTime: TimeInterval = 0
     var deltaTime: TimeInterval = 0
 
@@ -28,8 +27,10 @@ class GameScene: SKScene {
             switch newValue {
             case .ongoing:
                 player.state = .running
+                pauseEnemies(bool: false)
             case .finished:
                 player.state = .idle
+                pauseEnemies(bool: true)
             default:
                 break
             }
@@ -39,7 +40,9 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: -6.0)
-        
+        physicsBody = SKPhysicsBody(edgeFrom: CGPoint(x: frame.minX, y: frame.minY), to: CGPoint(x: frame.maxX, y: frame.minY))
+        physicsBody?.categoryBitMask = GameConstants.PhysicsCategories.frame
+        physicsBody?.contactTestBitMask = GameConstants.PhysicsCategories.player
         createLayers()
     }
     
@@ -48,11 +51,9 @@ class GameScene: SKScene {
         worldLayer.zPosition = GameConstants.Zpositions.world
         addChild(worldLayer)
         worldLayer.layerVelocity = CGPoint(x: -200, y: 0)
-        
         backgroundLayer = RepeatingLayer()
         backgroundLayer.zPosition = GameConstants.Zpositions.farBackground
         addChild(backgroundLayer)
-        
         for index in 0 ... 1 {
             let backgroundImage = SKSpriteNode(imageNamed: GameConstants.AssetNames.desertBackground)
             backgroundImage.name = String(index)
@@ -61,15 +62,14 @@ class GameScene: SKScene {
             backgroundImage.position = CGPoint(x: 0.0 + CGFloat(index) * backgroundImage.size.width, y: 0)
             backgroundLayer.addChild(backgroundImage)
         }
-        
         backgroundLayer.layerVelocity = CGPoint(x: -100, y: 0)
-        
         load(level: "Level_0-1")
     }
     
     func load(level: String) {
         guard let levelNode = SKNode.unarchiveFromFile(file: level) else { return }
         mapNode = levelNode
+        levelNode.isPaused = false
         worldLayer.addChild(mapNode)
         loadTileMap()
     }
@@ -103,13 +103,10 @@ class GameScene: SKScene {
     func addPlayerActions() {
         let up = SKAction.moveBy(x: 0, y: frame.size.height / 4, duration: 0.4)
         up.timingMode = .easeOut
-        
         player.createUserData(entry: up, forkey: GameConstants.Actions.jumpUpActionKey)
-        
         let move = SKAction.moveBy(x: 0, y: player.size.height, duration: 0.4)
         let jump = SKAction.animate(with: player.jumpFrames, timePerFrame: 0.4 / Double(player.jumpFrames.count), resize: true, restore: true)
         let group = SKAction.group([move, jump])
-        
         player.createUserData(entry: group, forkey: GameConstants.Actions.brakeDescendActionKEy)
     }
     
@@ -128,8 +125,37 @@ class GameScene: SKScene {
     func brakeDescend() {
         brake = true
         player.physicsBody?.velocity.dy = 0.0
-        
         player.run(player.userData?.value(forKey: GameConstants.Actions.brakeDescendActionKEy) as! SKAction)
+    }
+    
+    func handleEnemyContact() {
+        die(reason: 0)
+    }
+    
+    func pauseEnemies(bool: Bool) {
+        for enemy in tileMap[GameConstants.AssetNames.enemy] {
+            enemy.isPaused = bool
+        }
+    }
+    
+    func die(reason: Int) {
+        gameState = .finished
+        player.turnGravity(on: false)
+        let deathAnimation: SKAction!
+        switch reason {
+        case 0:
+            deathAnimation = SKAction.animate(with: player.dieFrames, timePerFrame: 0.1, resize: true, restore: true)
+        case 1:
+            let up = SKAction.moveTo(y: frame.midY / 2, duration: 0.3)
+            let wait = SKAction.wait(forDuration: 0.1)
+            let down = SKAction.moveTo(y: -player.size.height, duration: 0.2)
+            deathAnimation = SKAction.sequence([up, wait, down])
+        default:
+            deathAnimation = SKAction.animate(with: player.dieFrames, timePerFrame: 0.1, resize: true, restore: true)
+        }
+        player.run(deathAnimation) {
+            self.player.removeFromParent()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -167,7 +193,6 @@ class GameScene: SKScene {
             deltaTime = 0
         }
         lastTime = currentTime
-        
         if gameState == .ongoing {
             worldLayer.update(deltaTime)
             backgroundLayer.update(deltaTime)
@@ -194,6 +219,11 @@ extension GameScene: SKPhysicsContactDelegate {
             brake = false
         case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.finish:
             gameState = .finished
+        case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.enemy:
+            handleEnemyContact()
+        case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.frame:
+            physicsBody = nil
+            die(reason: 1)
         default:
             break
         }
@@ -201,7 +231,6 @@ extension GameScene: SKPhysicsContactDelegate {
     
     func didEnd(_ contact: SKPhysicsContact) {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-        
         switch contactMask {
         case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.ground:
             player.airborne = true

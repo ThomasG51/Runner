@@ -25,6 +25,7 @@ struct GameConstants {
         static let player = "Player"
         static let playerDefault = "Idle_0"
         static let ground = "GroundNode"
+        static let enemy = "Enemy"
         static let finishLine = "FinishLine"
     }
     
@@ -51,7 +52,7 @@ struct GameConstants {
         static let ground: UInt32 = 0x1 << 1
         static let finish: UInt32 = 0x1 << 2
         static let collectible: UInt32 = 0x1 << 3
-        static let ennemy: UInt32 = 0x1 << 4
+        static let enemy: UInt32 = 0x1 << 4
         static let frame: UInt32 = 0x1 << 5
         static let ceiling: UInt32 = 0x1 << 6
     }

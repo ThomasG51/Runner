@@ -15,7 +15,7 @@ extension SKNode {
         do {
             let sceneData = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             
-            let unarchiver = try NSKeyedUnarchiver(forReadingWith: sceneData)
+            let unarchiver = NSKeyedUnarchiver(forReadingWith: sceneData)
             unarchiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
             let scene = unarchiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! SKNode
             unarchiver.finishDecoding()
