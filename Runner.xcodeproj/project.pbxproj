@@ -23,6 +23,9 @@
 		7E30EC5927F1DCF20061F2FB /* PhysicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC5827F1DCF20061F2FB /* PhysicsHelper.swift */; };
 		7E30EC5C27F1EF000061F2FB /* GroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E30EC5B27F1EF000061F2FB /* GroundNode.swift */; };
 		7E499279293B8CC000FBA984 /* ObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E499278293B8CC000FBA984 /* ObjectHelper.swift */; };
+		7E56312C2944E3EA00DAF5CF /* ParticleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56312B2944E3EA00DAF5CF /* ParticleHelper.swift */; };
+		7E5631302944E57000DAF5CF /* CoinDustEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E56312E2944E57000DAF5CF /* CoinDustEmitter.sks */; };
+		7E5631312944E57000DAF5CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E56312F2944E57000DAF5CF /* Assets.xcassets */; };
 		7E6606CB27F446BC0081814B /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6606CA27F446BC0081814B /* AnimationHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,9 @@
 		7E30EC5827F1DCF20061F2FB /* PhysicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsHelper.swift; sourceTree = "<group>"; };
 		7E30EC5B27F1EF000061F2FB /* GroundNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundNode.swift; sourceTree = "<group>"; };
 		7E499278293B8CC000FBA984 /* ObjectHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectHelper.swift; sourceTree = "<group>"; };
+		7E56312B2944E3EA00DAF5CF /* ParticleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleHelper.swift; sourceTree = "<group>"; };
+		7E56312E2944E57000DAF5CF /* CoinDustEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDustEmitter.sks; sourceTree = "<group>"; };
+		7E56312F2944E57000DAF5CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E6606CA27F446BC0081814B /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +84,7 @@
 		7E30EC2727EF64AF0061F2FB /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				7E56312D2944E53000DAF5CF /* Particle Emitters */,
 				7E30EC2827EF64AF0061F2FB /* AppDelegate.swift */,
 				7E30EC3F27EF64F80061F2FB /* Info.plist */,
 				7E30EC3527EF64B00061F2FB /* Assets.xcassets */,
@@ -167,6 +174,7 @@
 				7E499278293B8CC000FBA984 /* ObjectHelper.swift */,
 				7E30EC5827F1DCF20061F2FB /* PhysicsHelper.swift */,
 				7E6606CA27F446BC0081814B /* AnimationHelper.swift */,
+				7E56312B2944E3EA00DAF5CF /* ParticleHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -178,6 +186,15 @@
 				7E30EC5B27F1EF000061F2FB /* GroundNode.swift */,
 			);
 			path = Node;
+			sourceTree = "<group>";
+		};
+		7E56312D2944E53000DAF5CF /* Particle Emitters */ = {
+			isa = PBXGroup;
+			children = (
+				7E56312E2944E57000DAF5CF /* CoinDustEmitter.sks */,
+				7E56312F2944E57000DAF5CF /* Assets.xcassets */,
+			);
+			path = "Particle Emitters";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,7 +259,9 @@
 				7E30EC4627EF6AF80061F2FB /* Level_0-1.sks in Resources */,
 				7E30EC4A27EF6BFA0061F2FB /* TileSets.sks in Resources */,
 				7E30EC3627EF64B00061F2FB /* Assets.xcassets in Resources */,
+				7E5631312944E57000DAF5CF /* Assets.xcassets in Resources */,
 				7E30EC3927EF64B00061F2FB /* LaunchScreen.storyboard in Resources */,
+				7E5631302944E57000DAF5CF /* CoinDustEmitter.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +279,7 @@
 				7E499279293B8CC000FBA984 /* ObjectHelper.swift in Sources */,
 				7E30EC5627F1D8AD0061F2FB /* PlayerNode.swift in Sources */,
 				7E30EC5427F1BE230061F2FB /* GameConstants.swift in Sources */,
+				7E56312C2944E3EA00DAF5CF /* ParticleHelper.swift in Sources */,
 				7E6606CB27F446BC0081814B /* AnimationHelper.swift in Sources */,
 				7E30EC2927EF64AF0061F2FB /* AppDelegate.swift in Sources */,
 				7E30EC5227F1B8830061F2FB /* RepeatingLayer.swift in Sources */,

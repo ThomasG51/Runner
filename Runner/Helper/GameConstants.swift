@@ -27,6 +27,8 @@ struct GameConstants {
         static let ground = "GroundNode"
         static let enemy = "Enemy"
         static let finishLine = "FinishLine"
+        static let coin = "Coin"
+        static let coinDefault = "gold0"
     }
     
     struct Atlas {
@@ -38,11 +40,17 @@ struct GameConstants {
         static let jumpPrefixKey = "Jump_"
         static let playerDieAtlas = "Player Die Atlas"
         static let diePrefixKey = "Die_"
+        static let coinRotateAtlas = "Coin Rotate Atlas"
+        static let coinPrefixKey = "gold"
     }
     
     struct Actions {
         static let jumpUpActionKey = "JumpUp"
         static let brakeDescendActionKEy = "BrakeDescend"
+    }
+    
+    struct Particle {
+        static let coinDustEmitter = "CoinDustEmitter"
     }
     
     struct PhysicsCategories {

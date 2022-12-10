@@ -21,6 +21,7 @@ class GameScene: SKScene {
     var brake = false
     var lastTime: TimeInterval = 0
     var deltaTime: TimeInterval = 0
+    var coins = 0
 
     var gameState = GameState.ready {
         willSet {
@@ -138,6 +139,28 @@ class GameScene: SKScene {
         }
     }
     
+    func handleCollectible(sprite: SKSpriteNode) {
+        switch sprite.name {
+        case GameConstants.AssetNames.coin:
+            collectCoin(sprite: sprite)
+        default:
+            break
+        }
+    }
+    
+    func collectCoin(sprite: SKSpriteNode) {
+        coins += 1
+        
+        guard let coinDust = ParticleHelper.addParticleEffect(name: GameConstants.Particle.coinDustEmitter, particlePositionRange: CGVector(dx: 5.0, dy: 5.0), position: CGPoint.zero) else { return }
+        coinDust.zPosition = GameConstants.Zpositions.elements
+        sprite.addChild(coinDust)
+        
+        sprite.run(SKAction.fadeOut(withDuration: 0.4)) {
+            coinDust.removeFromParent()
+            sprite.removeFromParent()
+        }
+    }
+    
     func die(reason: Int) {
         gameState = .finished
         player.turnGravity(on: false)
@@ -224,6 +247,9 @@ extension GameScene: SKPhysicsContactDelegate {
         case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.frame:
             physicsBody = nil
             die(reason: 1)
+        case GameConstants.PhysicsCategories.player | GameConstants.PhysicsCategories.collectible:
+            let collectible = contact.bodyA.node?.name == player.name ? contact.bodyB.node as! SKSpriteNode : contact.bodyA.node as! SKSpriteNode
+            handleCollectible(sprite: collectible)
         default:
             break
         }
