@@ -29,6 +29,8 @@ struct GameConstants {
         static let finishLine = "FinishLine"
         static let coin = "Coin"
         static let coinDefault = "gold0"
+        static let superCoin = "SuperCoin"
+        static let superCoinNames = ["Super1", "Super2", "Super3"]
     }
     
     struct Atlas {

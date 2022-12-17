@@ -22,6 +22,7 @@ class GameScene: SKScene {
     var lastTime: TimeInterval = 0
     var deltaTime: TimeInterval = 0
     var coins = 0
+    var superCoins = 0
 
     var gameState = GameState.ready {
         willSet {
@@ -149,7 +150,7 @@ class GameScene: SKScene {
     
     func handleCollectible(sprite: SKSpriteNode) {
         switch sprite.name {
-        case GameConstants.AssetNames.coin:
+        case GameConstants.AssetNames.coin, _ where GameConstants.AssetNames.superCoinNames.contains(sprite.name!):
             collectCoin(sprite: sprite)
         default:
             break
@@ -157,7 +158,11 @@ class GameScene: SKScene {
     }
     
     func collectCoin(sprite: SKSpriteNode) {
-        coins += 1
+        if GameConstants.AssetNames.superCoinNames.contains(sprite.name!) {
+            superCoins += 1
+        } else {
+            coins += 1
+        }
         
         guard let coinDust = ParticleHelper.addParticleEffect(name: GameConstants.Particle.coinDustEmitter, particlePositionRange: CGVector(dx: 5.0, dy: 5.0), position: CGPoint.zero) else { return }
         coinDust.zPosition = GameConstants.Zpositions.elements

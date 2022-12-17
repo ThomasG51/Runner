@@ -11,7 +11,10 @@ import SpriteKit
 class ObjectHelper {
     static func handleChild(sprite: SKSpriteNode, with name: String) {
         switch name {
-        case GameConstants.AssetNames.finishLine, GameConstants.AssetNames.enemy:
+        case
+            GameConstants.AssetNames.finishLine,
+            GameConstants.AssetNames.enemy,
+            _ where GameConstants.AssetNames.superCoinNames.contains(name):
             PhysicsHelper.addPhysicsBody(to: sprite, with: name)
         default:
             let component = name.components(separatedBy: NSCharacterSet.decimalDigits.inverted)

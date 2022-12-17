@@ -27,6 +27,7 @@
 		7E5631302944E57000DAF5CF /* CoinDustEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E56312E2944E57000DAF5CF /* CoinDustEmitter.sks */; };
 		7E5631312944E57000DAF5CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E56312F2944E57000DAF5CF /* Assets.xcassets */; };
 		7E5631332944EF0700DAF5CF /* BrakeSparkEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E5631322944EF0700DAF5CF /* BrakeSparkEmitter.sks */; };
+		7E5D1AFE294E1DC600616784 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E5D1AFD294E1DC600616784 /* MyActions.sks */; };
 		7E6606CB27F446BC0081814B /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6606CA27F446BC0081814B /* AnimationHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		7E56312E2944E57000DAF5CF /* CoinDustEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDustEmitter.sks; sourceTree = "<group>"; };
 		7E56312F2944E57000DAF5CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E5631322944EF0700DAF5CF /* BrakeSparkEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrakeSparkEmitter.sks; sourceTree = "<group>"; };
+		7E5D1AFD294E1DC600616784 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyActions.sks; sourceTree = "<group>"; };
 		7E6606CA27F446BC0081814B /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +134,7 @@
 			children = (
 				7E30EC4727EF6B130061F2FB /* Level */,
 				7E30EC4827EF6BD00061F2FB /* Tile */,
+				7E5D1AFF294E1DD500616784 /* Actions */,
 			);
 			path = "Scene Editor";
 			sourceTree = "<group>";
@@ -200,6 +203,14 @@
 			path = "Particle Emitters";
 			sourceTree = "<group>";
 		};
+		7E5D1AFF294E1DD500616784 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				7E5D1AFD294E1DC600616784 /* MyActions.sks */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,6 +273,7 @@
 				7E30EC4627EF6AF80061F2FB /* Level_0-1.sks in Resources */,
 				7E30EC4A27EF6BFA0061F2FB /* TileSets.sks in Resources */,
 				7E30EC3627EF64B00061F2FB /* Assets.xcassets in Resources */,
+				7E5D1AFE294E1DC600616784 /* MyActions.sks in Resources */,
 				7E5631332944EF0700DAF5CF /* BrakeSparkEmitter.sks in Resources */,
 				7E5631312944E57000DAF5CF /* Assets.xcassets in Resources */,
 				7E30EC3927EF64B00061F2FB /* LaunchScreen.storyboard in Resources */,
