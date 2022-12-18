@@ -28,6 +28,9 @@
 		7E5631312944E57000DAF5CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E56312F2944E57000DAF5CF /* Assets.xcassets */; };
 		7E5631332944EF0700DAF5CF /* BrakeSparkEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E5631322944EF0700DAF5CF /* BrakeSparkEmitter.sks */; };
 		7E5D1AFE294E1DC600616784 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E5D1AFD294E1DC600616784 /* MyActions.sks */; };
+		7E5D1B02294E2D4100616784 /* HudDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D1B01294E2D4100616784 /* HudDelegate.swift */; };
+		7E5D1B04294F494300616784 /* GameHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D1B03294F494300616784 /* GameHud.swift */; };
+		7E5D1B09294F4FD800616784 /* unanimous.inverted-brk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E5D1B08294F4FD800616784 /* unanimous.inverted-brk.ttf */; };
 		7E6606CB27F446BC0081814B /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6606CA27F446BC0081814B /* AnimationHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,9 @@
 		7E56312F2944E57000DAF5CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E5631322944EF0700DAF5CF /* BrakeSparkEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrakeSparkEmitter.sks; sourceTree = "<group>"; };
 		7E5D1AFD294E1DC600616784 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyActions.sks; sourceTree = "<group>"; };
+		7E5D1B01294E2D4100616784 /* HudDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudDelegate.swift; sourceTree = "<group>"; };
+		7E5D1B03294F494300616784 /* GameHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameHud.swift; path = Runner/Scene/GameHud.swift; sourceTree = SOURCE_ROOT; };
+		7E5D1B08294F4FD800616784 /* unanimous.inverted-brk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "unanimous.inverted-brk.ttf"; sourceTree = "<group>"; };
 		7E6606CA27F446BC0081814B /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,15 +97,16 @@
 				7E30EC2827EF64AF0061F2FB /* AppDelegate.swift */,
 				7E30EC3F27EF64F80061F2FB /* Info.plist */,
 				7E30EC3527EF64B00061F2FB /* Assets.xcassets */,
+				7E30EC4127EF65760061F2FB /* UI */,
+				7E5D1B05294F4A3D00616784 /* Font */,
 				7E30EC4E27F1AC290061F2FB /* Layer */,
 				7E30EC5A27F1EED40061F2FB /* Node */,
 				7E30EC4327EF659B0061F2FB /* Scene */,
 				7E30EC4427EF6AB80061F2FB /* Scene Editor */,
 				7E30EC4227EF658E0061F2FB /* Controller */,
-				7E30EC4127EF65760061F2FB /* UI */,
+				7E5D1B00294E2D2000616784 /* Protocol */,
 				7E30EC4B27EF72120061F2FB /* Extension */,
 				7E30EC5727F1DCD50061F2FB /* Helper */,
-				7E56312D2944E53000DAF5CF /* Particle Emitters */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -125,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				7E30EC2E27EF64AF0061F2FB /* GameScene.swift */,
+				7E5D1B03294F494300616784 /* GameHud.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -135,6 +143,7 @@
 				7E30EC4727EF6B130061F2FB /* Level */,
 				7E30EC4827EF6BD00061F2FB /* Tile */,
 				7E5D1AFF294E1DD500616784 /* Actions */,
+				7E56312D2944E53000DAF5CF /* Particle Emitters */,
 			);
 			path = "Scene Editor";
 			sourceTree = "<group>";
@@ -211,6 +220,22 @@
 			path = Actions;
 			sourceTree = "<group>";
 		};
+		7E5D1B00294E2D2000616784 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7E5D1B01294E2D4100616784 /* HudDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7E5D1B05294F4A3D00616784 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				7E5D1B08294F4FD800616784 /* unanimous.inverted-brk.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -271,6 +296,7 @@
 			files = (
 				7E30EC3427EF64AF0061F2FB /* Main.storyboard in Resources */,
 				7E30EC4627EF6AF80061F2FB /* Level_0-1.sks in Resources */,
+				7E5D1B09294F4FD800616784 /* unanimous.inverted-brk.ttf in Resources */,
 				7E30EC4A27EF6BFA0061F2FB /* TileSets.sks in Resources */,
 				7E30EC3627EF64B00061F2FB /* Assets.xcassets in Resources */,
 				7E5D1AFE294E1DC600616784 /* MyActions.sks in Resources */,
@@ -290,6 +316,7 @@
 			files = (
 				7E30EC2F27EF64AF0061F2FB /* GameScene.swift in Sources */,
 				7E30EC4D27EF72BB0061F2FB /* SKNode+Extension.swift in Sources */,
+				7E5D1B04294F494300616784 /* GameHud.swift in Sources */,
 				7E30EC5027F1AC450061F2FB /* Layer.swift in Sources */,
 				7E30EC3127EF64AF0061F2FB /* GameViewController.swift in Sources */,
 				7E499279293B8CC000FBA984 /* ObjectHelper.swift in Sources */,
@@ -300,6 +327,7 @@
 				7E30EC2927EF64AF0061F2FB /* AppDelegate.swift in Sources */,
 				7E30EC5227F1B8830061F2FB /* RepeatingLayer.swift in Sources */,
 				7E30EC5C27F1EF000061F2FB /* GroundNode.swift in Sources */,
+				7E5D1B02294E2D4100616784 /* HudDelegate.swift in Sources */,
 				7E30EC5927F1DCF20061F2FB /* PhysicsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

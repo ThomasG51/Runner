@@ -23,6 +23,7 @@ class GameScene: SKScene {
     var deltaTime: TimeInterval = 0
     var coins = 0
     var superCoins = 0
+    var hudDelegate: HudDelegate?
 
     var gameState = GameState.ready {
         willSet {
@@ -87,6 +88,7 @@ class GameScene: SKScene {
             }
         }
         addPlayer()
+        addHud()
     }
 
     func addPlayer() {
@@ -150,7 +152,9 @@ class GameScene: SKScene {
     
     func handleCollectible(sprite: SKSpriteNode) {
         switch sprite.name {
-        case GameConstants.AssetNames.coin, _ where GameConstants.AssetNames.superCoinNames.contains(sprite.name!):
+        case
+            GameConstants.AssetNames.coin,
+            _ where GameConstants.AssetNames.superCoinNames.contains(sprite.name!):
             collectCoin(sprite: sprite)
         default:
             break
@@ -160,8 +164,14 @@ class GameScene: SKScene {
     func collectCoin(sprite: SKSpriteNode) {
         if GameConstants.AssetNames.superCoinNames.contains(sprite.name!) {
             superCoins += 1
+            for index in 0 ..< 3 {
+                if GameConstants.AssetNames.superCoinNames[index] == sprite.name! {
+                    hudDelegate?.addSuperCoin(index: index)
+                }
+            }
         } else {
             coins += 1
+            hudDelegate?.updateCoinLabel(coins: coins)
         }
         
         guard let coinDust = ParticleHelper.addParticleEffect(name: GameConstants.Particle.coinDustEmitter, particlePositionRange: CGVector(dx: 5.0, dy: 5.0), position: CGPoint.zero) else { return }
@@ -172,6 +182,14 @@ class GameScene: SKScene {
             coinDust.removeFromParent()
             sprite.removeFromParent()
         }
+    }
+    
+    func addHud() {
+        let hud = GameHud(with: CGSize(width: frame.width, height: frame.height * 0.1))
+        hud.position = CGPoint(x: frame.midX, y: frame.maxY - frame.height * 0.05)
+        hud.zPosition = GameConstants.Zpositions.hud
+        hudDelegate = hud
+        addChild(hud)
     }
     
     func die(reason: Int) {

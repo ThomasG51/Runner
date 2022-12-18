@@ -31,6 +31,7 @@ struct GameConstants {
         static let coinDefault = "gold0"
         static let superCoin = "SuperCoin"
         static let superCoinNames = ["Super1", "Super2", "Super3"]
+        static let gameFontName = "Unanimous Inverted -BRK-"
     }
     
     struct Atlas {
