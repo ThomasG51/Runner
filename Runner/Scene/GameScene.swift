@@ -27,6 +27,7 @@ class GameScene: SKScene {
     var world: Int
     var level: Int
     var levelKey: String
+    let soundPlayer = SoundPlayer()
     
     var hudDelegate: HudDelegate?
     var sceneManagerDelegate: SceneManagerDelegate?
@@ -53,9 +54,11 @@ class GameScene: SKScene {
         self.world = world
         self.level = level
         self.levelKey = "Level_\(world)-\(level)"
+        self.sceneManagerDelegate = sceneManagerDelegate
         super.init(size: size)
     }
     
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -175,6 +178,7 @@ class GameScene: SKScene {
         case
             GameConstants.AssetNames.coin,
             _ where GameConstants.AssetNames.superCoinNames.contains(sprite.name!):
+            run(soundPlayer.coinSound)
             collectCoin(sprite: sprite)
         default:
             break
@@ -241,6 +245,7 @@ class GameScene: SKScene {
     }
     
     func die(reason: Int) {
+        run(soundPlayer.deathSound)
         gameState = .finished
         player.turnGravity(on: false)
         let deathAnimation: SKAction!
@@ -262,6 +267,7 @@ class GameScene: SKScene {
     }
     
     func finish() {
+        run(soundPlayer.completedSound)
         gameState = .finished
         
         var stars = 0
@@ -380,13 +386,13 @@ extension GameScene: PopupButtonHandlerDelegate {
         switch index {
         case 0:
             // Menu
-            break
+            sceneManagerDelegate?.presentMenuScene()
         case 1:
             // Play
-            break
+            sceneManagerDelegate?.presentGameScene(for: world, in: level)
         case 2:
             // Retry
-            break
+            sceneManagerDelegate?.presentLevelScene(for: level)
         case 3:
             // Cancel
             popup!.run(SKAction.fadeOut(withDuration: 0.2), completion: {

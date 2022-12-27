@@ -5,14 +5,26 @@
 //  Created by Thomas George on 26/03/2022.
 //
 
-import GameplayKit
+import AVFoundation
 import SpriteKit
 import UIKit
+
+var backgroundMusicPlayer: AVAudioPlayer!
 
 class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presentMenuScene()
+        startBackgroundMusic()
+    }
+
+    func startBackgroundMusic() {
+        let path = Bundle.main.path(forResource: "background", ofType: "wav")
+        let url = URL(fileURLWithPath: path!)
+
+        backgroundMusicPlayer = try! AVAudioPlayer(contentsOf: url)
+        backgroundMusicPlayer.numberOfLoops = -1
+        backgroundMusicPlayer.play()
     }
 }
 

@@ -11,6 +11,7 @@ class ButtonNode: SKSpriteNode {
     var defaultButton: SKSpriteNode
     var action: (Int) -> Void
     var index: Int
+    var soundPlayer = SoundPlayer()
 
     init(defaultButtonImage: String, action: @escaping (Int) -> Void, index: Int) {
         self.defaultButton = SKSpriteNode(imageNamed: defaultButtonImage)
@@ -30,6 +31,7 @@ class ButtonNode: SKSpriteNode {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         defaultButton.alpha = 0.75
+        run(soundPlayer.buttonSound)
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,10 +52,10 @@ class ButtonNode: SKSpriteNode {
         if defaultButton.contains(location) {
             action(index)
         }
-        
+
         defaultButton.alpha = 1.0
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         defaultButton.alpha = 1.0
     }
