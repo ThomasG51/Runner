@@ -35,7 +35,7 @@ class GameHud: SKSpriteNode {
             emptySlot.alpha = 0.5
             emptySlot.scale(to: superCoinCounter.size, width: true, multiplier: 0.3)
             emptySlot.position = CGPoint(
-                x: -superCoinCounter.size.width / 2 + emptySlot.size.width / 2 + CGFloat(i) * superCoinCounter.size.width / 2 + superCoinCounter.size.width * 0.05,
+                x: -superCoinCounter.size.width / 2 + emptySlot.size.width / 2 + CGFloat(i) * superCoinCounter.size.width / 3 + superCoinCounter.size.width * 0.05,
                 y: superCoinCounter.frame.midY)
             emptySlot.zPosition = GameConstants.Zpositions.hud
             superCoinCounter.addChild(emptySlot)

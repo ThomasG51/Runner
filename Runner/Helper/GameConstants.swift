@@ -19,9 +19,11 @@ struct GameConstants {
     }
     
     struct AssetNames {
+        static let gameName = "Indie Run"
         static let groundTiles = "Ground Tiles"
         static let desertBackground = "DesertBackground"
         static let grassBackground = "GrassBackground"
+        static let worldBackgroundNames = ["DesertBackground", "GrassBackground"]
         static let player = "Player"
         static let playerDefault = "Idle_0"
         static let ground = "GroundNode"
@@ -32,6 +34,30 @@ struct GameConstants {
         static let superCoin = "SuperCoin"
         static let superCoinNames = ["Super1", "Super2", "Super3"]
         static let gameFontName = "Unanimous Inverted -BRK-"
+        static let playButton = "PlayButton"
+        static let retryButton = "RetryButton"
+        static let menuButton = "MenuButton"
+        static let pauseButton = "PauseButton"
+        static let emptyButton = "EmptyButton"
+        static let cancelButton = "CancelButton"
+        static let largePopup = "PopupLarge"
+        static let smallPopup = "PopupSmall"
+        static let fullStar = "StarFull"
+        static let emptyStar = "StarEmpty"
+        static let banner = "Banner"
+        static let popupButtons = ["MenuButton", "PlayButton", "RetryButton", "CancelButton"]
+    }
+    
+    struct Score {
+        static let scoreKey = "score"
+        static let coinsKey = "coins"
+        static let starsKey = "stars"
+    }
+    
+    struct State {
+        static let pausedKey = "Paused"
+        static let completedKey = "Completed"
+        static let failedKey = "Failed"
     }
     
     struct Atlas {
