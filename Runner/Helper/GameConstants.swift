@@ -46,6 +46,7 @@ struct GameConstants {
         static let emptyStar = "StarEmpty"
         static let banner = "Banner"
         static let popupButtons = ["MenuButton", "PlayButton", "RetryButton", "CancelButton"]
+        static let menuBackground = "MenuBackground"
     }
     
     struct Score {
